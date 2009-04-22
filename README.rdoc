@@ -1,0 +1,7 @@
+= mysql-replication-helper
+
+Description goes here.
+
+== Copyright
+
+Copyright (c) 2009 tadman. See LICENSE for details.
