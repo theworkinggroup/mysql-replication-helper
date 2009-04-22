@@ -1,7 +1,7 @@
 = mysql-replication-helper
 
-Description goes here.
+Script to mitigate errors generated during MySQL replication.
 
 == Copyright
 
-Copyright (c) 2009 tadman. See LICENSE for details.
+Copyright (c) 2009 The Working Group Inc. (http://twg.ca/)
