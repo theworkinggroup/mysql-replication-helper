@@ -17,6 +17,11 @@ module MysqlReplicationHelper
           "GRANT ALL PRIVILEGES ON `#{$3}`.* TO `#{$1}`@`#{$2}`",
           "START SLAVE"
         ]
+      when /^Error 'View '[^\']+' references invalid table\(s\) or column\(s\) or function\(s\) or definer\/invoker of view lack rights to use them' on query. Default database: '([^\']+)'. Query: 'CREATE .*? DEFINER=`([^\`]+)`@`([^\`]+)`/
+        [
+          "GRANT ALL PRIVILEGES ON `#{$1}`.* TO `#{$2}`@`#{$3}`",
+          "START SLAVE"
+        ]
       end
     end
   end
