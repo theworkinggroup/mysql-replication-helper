@@ -2,21 +2,22 @@
 
 Gem::Specification.new do |s|
   s.name = %q{mysql-replication-helper}
-  s.version = "0.0.1"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["tadman"]
-  s.date = %q{2009-04-22}
+  s.authors = ["Scott Tadman"]
+  s.date = %q{2009-04-24}
+  s.default_executable = %q{replication-helper}
   s.email = %q{github@tadman.ca}
+  s.executables = ["replication-helper"]
   s.extra_rdoc_files = [
-    "LICENSE",
     "README.rdoc"
   ]
   s.files = [
-    "LICENSE",
     "README.rdoc",
     "Rakefile",
     "VERSION.yml",
+    "bin/replication-helper",
     "lib/mysql_replication_helper.rb",
     "lib/mysql_replication_helper/error_handler.rb",
     "test/mysql_replication_helper/error_handler_test.rb",
@@ -24,7 +25,7 @@ Gem::Specification.new do |s|
     "test/test_helper.rb"
   ]
   s.has_rdoc = true
-  s.homepage = %q{http://github.com/tadman/mysql-replication-helper}
+  s.homepage = %q{http://github.com/theworkinggroup/mysql-replication-helper}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.2}

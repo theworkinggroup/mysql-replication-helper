@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+#
+# replication-helper  MySQL replication helper agent
+#
+# chkconfig: - 65 34
+# description: MySQL replication helper agent
+# processname: replication-helper
+# config: /etc/replication-helper.conf
+# pidfile: /var/run/replication-helper.pid
+#
+
+require 'rubygems'
+require 'daemons'
+
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
+
+require 'mysql_replication_helper'
+
+daemon_script_path = File.expand_path('../lib/mysql_replication_helper/daemon_launcher.rb', File.dirname(__FILE__))
+
+if (!File.exist?(daemon_script_path))
+  daemon_script_path = Gem.required_location('mysql_replication_helper','mysql_replication_helper/daemon_launcher.rb')
+end    
+
+Daemons.run(daemon_script_path)

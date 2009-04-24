@@ -7,8 +7,10 @@ begin
     gem.name = "mysql-replication-helper"
     gem.summary = %Q{MySQL Replication Helper}
     gem.email = "github@tadman.ca"
-    gem.homepage = "http://github.com/tadman/mysql-replication-helper"
-    gem.authors = ["tadman"]
+    gem.homepage = "http://github.com/theworkinggroup/mysql-replication-helper"
+    gem.authors = [ 'Scott Tadman' ]
+    gem.executables = %w[ replication-helper ]
+    gem.add_dependency 'daemons'
 
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
@@ -36,7 +38,6 @@ rescue LoadError
   end
 end
 
-
 task :default => :test
 
 require 'rake/rdoctask'
@@ -53,4 +54,3 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
-

@@ -1,9 +1,5 @@
 module MysqlReplicationHelper
-  class ErrorHandler
-    def initialize(options = nil)
-      @options = options || { }
-    end
-    
+  module ErrorHandler
     def sql_to_recover_from(error)
       case (error)
       when /^Error 'Unknown database '([^\']+)'' on query/

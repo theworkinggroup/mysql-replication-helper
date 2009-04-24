@@ -1,8 +1,12 @@
 require File.expand_path(File.dirname(__FILE__) + "/../test_helper")
 
+class TestHandler
+  include MysqlReplicationHelper::ErrorHandler
+end
+
 class MysqlReplicationHelper::ErrorHandlerTest < Test::Unit::TestCase
   def test_responses
-    handler = MysqlReplicationHelper::ErrorHandler.new
+    handler = TestHandler.new
     
     [
       [
