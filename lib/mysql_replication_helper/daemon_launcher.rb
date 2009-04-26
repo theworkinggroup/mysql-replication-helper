@@ -29,10 +29,13 @@ options = { }
 config = { }
 config_file = nil
 
-op.on("--master_socket=s") { |socket| options[:master_socket] = socket }
-op.on("--master_data=s") { |dir| options[:master_data] = dir }
-op.on("--slave_socket=s") { |socket| options[:slave_socket] = socket }
-op.on("--slave_data=s") { |dir| options[:slave_data] = dir }
+op.on("--master-socket=s") { |socket| options[:master_socket] = socket }
+op.on("--master-data=s") { |dir| options[:master_data] = dir }
+op.on("--master-user=s") { |name| options[:master_user] = name }
+
+op.on("--slave-socket=s") { |socket| options[:slave_socket] = socket }
+op.on("--slave-data=s") { |dir| options[:slave_data] = dir }
+op.on("--slave-user=s") { |name| options[:slave_user] = name }
 
 op.on("-c", "--config=s") { |path| config_file = path }
 op.on("-v", "--verbose") { options[:verbose] = true }
@@ -53,4 +56,4 @@ config = DEFAULT_CONFIG.merge(config).merge(options)
 
 # == Main ===================================================================
 
-MysqlReplicationHelper::Daemon.new(config).start!
+MysqlReplicationHelper::Daemon.new(config).run!

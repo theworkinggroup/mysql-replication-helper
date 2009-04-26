@@ -1,14 +1,18 @@
 module MysqlReplicationHelper
   class Daemon
-    include ErrorHandler
-    
     def initialize(options)
-      @options = { }
+      @options = options
+      
+      @options[:master] = @master = Agent::Master.new(options)
+      @options[:slave] = @slave = Agent::Slave.new(options)
     end
     
-    def start!
-      # ...
-      puts "Start stub"
+    def run!
+      while (true)
+        @master.poll!
+        @slave.poll!
+        sleep(10)
+      end
     end
   end
 end
