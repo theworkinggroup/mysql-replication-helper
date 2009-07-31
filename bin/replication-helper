@@ -20,6 +20,6 @@ daemon_script_path = File.expand_path('../lib/mysql_replication_helper/daemon_la
 
 if (!File.exist?(daemon_script_path))
   daemon_script_path = Gem.required_location('mysql_replication_helper','mysql_replication_helper/daemon_launcher.rb')
-end    
+end
 
 Daemons.run(daemon_script_path)

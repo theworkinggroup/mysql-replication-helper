@@ -37,22 +37,23 @@ op.on("--slave-socket=s") { |socket| options[:slave_socket] = socket }
 op.on("--slave-data=s") { |dir| options[:slave_data] = dir }
 op.on("--slave-user=s") { |name| options[:slave_user] = name }
 
-op.on("-c", "--config=s") { |path| config_file = path }
+op.on("-c", "--config=s") { |path| config_file = nil }
 op.on("-v", "--verbose") { options[:verbose] = true }
-op.on("-d", "--daemon") { options[:daemon] = true }
 op.on("-h", "--help") { show_help }
 
 args = op.parse(*ARGV)
 
 # == Configuration ==========================================================
 
-if (config_file)
+[ CONFIG_FILE_LOCATIONS, config_file ].flatten.each do |config_file|
   if (File.exist?(config_file))
     config = YAML.load(open(config_file))
+    break
   end
 end
 
-config = DEFAULT_CONFIG.merge(config).merge(options)
+config = DEFAULT_CONFIG.merge(config.inject({ }) { |h,(k,v)| h[k.to_sym] = v; h }).merge(options)
+
 
 # == Main ===================================================================
 
